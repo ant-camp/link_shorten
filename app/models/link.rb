@@ -9,7 +9,7 @@ class Link < ApplicationRecord
   before_create :short_url
   #check if link is expired or not
   scope :expired?, -> {where(expired: true)}
-
+  has_one :stat
 
   #check if original_url has https or https
   def check_and_replace_url_protocal

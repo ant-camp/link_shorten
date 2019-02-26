@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_21_084731) do
+ActiveRecord::Schema.define(version: 2019_02_26_224303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,4 +23,13 @@ ActiveRecord::Schema.define(version: 2019_02_21_084731) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "stats", force: :cascade do |t|
+    t.integer "clicks", default: 0, null: false
+    t.bigint "link_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["link_id"], name: "index_stats_on_link_id"
+  end
+
+  add_foreign_key "stats", "links"
 end

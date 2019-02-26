@@ -1,24 +1,13 @@
-# README
+# Getting Started
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Ruby 2.5.1 & Rails 5.2.2
 
-Things you may want to cover:
+## Run Locally
+* `chruby ruby-2.5.1 or ruby package manager equivalent`
+* `bundle install`
+* `rake db:create db:migrate`
+* `rails s`
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Running Tests
+* `rspec`

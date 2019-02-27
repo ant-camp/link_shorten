@@ -20,8 +20,9 @@ class LinksController < ApplicationController
     if @link.expired?
       #if link expired returns true return 404
     else
+      #this causes N+1 Query
+      @link.stat.clicks_counter
       #redirect to url
-      #should have incriment counter triggered before the redirect
       redirect_to @link.original_url, status: :moved_permanently
     end
   end

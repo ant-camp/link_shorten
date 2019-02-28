@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root "links#new"
   resources :links, only: [:create,:new,:show]
-
+  get '/:hash_key' => 'links#forward_to_link', as: :short_url_forward
   namespace :admin do
     resources :links, only:[:show] do
       member do

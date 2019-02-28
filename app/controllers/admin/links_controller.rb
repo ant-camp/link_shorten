@@ -1,16 +1,21 @@
 class Admin::LinksController < ApplicationController
+  before_action :set_link, only: [:show, :expire_link]
+
   def show
   end
 
   def expire_link
     @link.update_attribute(:expired, true)
-    # redirect_to notice: "You have expired the link"
-    #figure out the correct page to redirect to
+    respond_to do |format|
+      format.js {render status: :ok }
+    end
   end
 
   private
 
-  def link_params
-    params.require(:link).permit(:original_url, :expired)
+  def set_link
+    @link = Link.find(params[:id])
   end
+
+
 end

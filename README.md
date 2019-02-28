@@ -6,6 +6,7 @@
 * `chruby ruby-2.5.1 or ruby package manager equivalent`
 * `bundle install`
 * `rake db:create db:migrate`
+* `redis-server`
 * `rails s`
 
 

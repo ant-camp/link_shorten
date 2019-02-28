@@ -7,7 +7,7 @@ class Admin::LinksController < ApplicationController
   def expire_link
     @link.update_attribute(:expired, true)
     respond_to do |format|
-      format.js {render status: :ok }
+      format.js { render layout: false}
     end
   end
 

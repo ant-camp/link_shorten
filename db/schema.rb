@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_26_224303) do
+ActiveRecord::Schema.define(version: 2019_02_28_072403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(version: 2019_02_26_224303) do
     t.boolean "expired", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "hash_key"
+    t.integer "clicks", default: 0, null: false
+    t.index ["hash_key"], name: "index_links_on_hash_key", unique: true
   end
 
   create_table "stats", force: :cascade do |t|

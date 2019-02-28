@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :link do
     original_url { Faker::Internet.url }
-    shorened_url { Faker::Internet.url.slug }
+    shortened_url { Faker::Internet.slug }
     expired { false }
+    clicks { 1 }
   end
 end

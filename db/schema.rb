@@ -26,13 +26,4 @@ ActiveRecord::Schema.define(version: 2019_02_28_072403) do
     t.index ["hash_key"], name: "index_links_on_hash_key", unique: true
   end
 
-  create_table "stats", force: :cascade do |t|
-    t.integer "clicks", default: 0, null: false
-    t.bigint "link_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["link_id"], name: "index_stats_on_link_id"
-  end
-
-  add_foreign_key "stats", "links"
 end

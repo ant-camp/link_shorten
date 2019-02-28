@@ -1,3 +1,8 @@
 <p><%= link_to @link.original_url, @link.original_url %></p>
-<p><%= link_to @link.shortened_url, @link.shortened_url %></p>
-<p><%= @link.expired %></p>
+
+
+<% unless @link.expired %>
+  <%= link_to "Expire", expire_link_admin_link_path(@link), remote: true, method: :put  %>
+<% end %>
+
+<p>Clicks: <%= @link.actual_count %></p>

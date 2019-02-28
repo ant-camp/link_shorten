@@ -1,3 +1,2 @@
-<p><%= link_to @link.original_url, @link.original_url %></p>
-<p><%= link_to @link.shortened_url, @link.shortened_url %></p>
+<p><%= link_to short_link_display(@link.shortened_url), short_url_forward_path(@link.hash_key) %></p>
 <p><%= link_to admin_link_path(@link), admin_link_path(@link)  %></p>

@@ -1,12 +1,13 @@
 class Link < ApplicationRecord
+  CACHE_SIZE = 50
+  URL_REGEX = /\A((http|https):\/\/)*[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?\z/ix
   include Redis::Objects
   before_validation :check_and_replace_url_protocal
+  validates :original_url, format: { with: URL_REGEX, message: 'Please provider a valid url.' }
   before_create :short_url
   before_create :create_hash_key
-  after_update :clear_cache
-  scope :expired?, -> {where(expired: true)}
   counter :redis_clicks
-  CACHE_SIZE = 50
+  after_update :clear_cache
 
 
   #Check if original_url has https or https
@@ -65,6 +66,7 @@ class Link < ApplicationRecord
     end
   end
 
+  #Generate new hash_key
   def create_new_hash_key(original_url)
     salt = SecureRandom.hex(1)
     self.hash_key = Digest::SHA1.hexdigest(salt + self.original_url)

@@ -13,6 +13,7 @@ RSpec.describe Link, type: :model do
 
   describe "validation" do
     it { should allow_value(Faker::Internet.url).for(:original_url) }
+    it { should_not allow_value(Faker::CryptoCoin.coin_name).for(:original_url) }
   end
 
 end

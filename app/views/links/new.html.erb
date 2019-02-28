@@ -1,20 +1,13 @@
+<% if notice %>
+  <aside id="notice"><%= notice %></aside>
+<% end %>
+
 <%= form_with(model: @link, local: true) do |form| %>
-  <% if @link.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@link.errors.count, "error") %> prohibited this link from being saved:</h2>
 
-      <ul>
-      <% @link.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="form-group"> <!-- Original Url -->
-  <%= form.label :url, class: 'control-label'%>
-  <%=form.text_field :original_url, placeholder: "Enter a url" %>
-</div>
+  <div> <!-- Original Url -->
+    <%= form.label :url, class: 'control-label'%>
+    <%=form.text_field :original_url, placeholder: "Enter a url" %>
+  </div>
 
 
   <div class="actions">

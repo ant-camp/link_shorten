@@ -23,8 +23,8 @@ class LinksController < ApplicationController
       render file: "#{Rails.root}/public/404.html", layout: false, status: 404
     else
       redirect_to @link.original_url, status: :moved_permanently
+      @link.click_counter
     end
-    @link.click_counter
   end
 
   private
